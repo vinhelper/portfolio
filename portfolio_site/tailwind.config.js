@@ -12,7 +12,7 @@ export default {
           "linear-gradient(rgba(52, 73, 94, 0.9), rgba(52, 73, 94, 1)), url(../images/sidebar-img.jpg)",
       },
       fontFamily: {
-        lato: ["Quicksand", "sans-serif"],
+        quicksand: ["Quicksand", "sans-serif"],
       },
       colors: {
         body: "#d4e6f1",
