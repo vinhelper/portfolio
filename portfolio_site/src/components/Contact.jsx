@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import BtnLoading from "./BtnLoading";
 
 function Contact() {
   const form = useRef();
+  const [loading, setLoading] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    setLoading(true);
 
     emailjs
       .sendForm(
@@ -26,6 +30,7 @@ function Contact() {
         (error) => {
           console.log("FAILED...", error.text);
           alert("Failed to send email.");
+          setLoading(false);
         }
       );
   };
@@ -80,12 +85,7 @@ function Contact() {
                 name="message"
                 rows="5"
               />
-              <button
-                type="submit"
-                className="w-full bg-brand text-base2 font-bold p-3 rounded-md hover:bg-brand2 transition duration-200"
-              >
-                Submit
-              </button>
+              <BtnLoading loading={loading} />
             </form>
           </div>
         </motion.div>
