@@ -1,15 +1,17 @@
 import PropTypes from "prop-types";
+import { FaArrowRight } from "react-icons/fa6";
 
 function BtnLoading({ loading }) {
   return (
-    <div className="w-full">
+    <button
+      type="submit"
+      disabled={loading}
+      className="inline-flex items-center gap-2 rounded-control bg-brand px-7 py-[15px] font-bold uppercase tracking-action text-ink transition-colors hover:bg-brand700 disabled:cursor-not-allowed disabled:opacity-45"
+    >
       {loading ? (
-        <button
-          disabled={true}
-          className="w-full flex flex-row items-center justify-center bg-gray-500 p-3 rounded-md"
-        >
+        <>
           <svg
-            className="animate-spin mr-2 h-5 w-5 text-white"
+            className="h-4 w-4 animate-spin"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -28,17 +30,15 @@ function BtnLoading({ loading }) {
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-          Sending...
-        </button>
+          Sending
+        </>
       ) : (
-        <button
-          type="submit"
-          className="w-full bg-brand text-base2 font-bold p-3 rounded-md hover:bg-brand2 transition duration-200"
-        >
-          Submit
-        </button>
+        <>
+          Send message
+          <FaArrowRight size={14} />
+        </>
       )}
-    </div>
+    </button>
   );
 }
 

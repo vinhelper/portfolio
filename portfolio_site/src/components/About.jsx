@@ -1,80 +1,160 @@
-import AboutCard from "./AboutCard";
+﻿import { motion } from "framer-motion";
 
-import { motion } from "framer-motion";
+import AboutCard from "./AboutCard";
+import SectionHeader from "./SectionHeader";
+import Tag from "./Tag";
+import { SECTIONS } from "../data/profile";
+
+const experience = [
+  {
+    period: "Since 2025",
+    title: "Frontend Developer",
+    where: "Bizbloqs Management Solutions",
+    description:
+      "An international company that operates through its Philippine office, providing an Order Management System (OMS) for the global logistics industry.",
+  },
+  {
+    period: "2022-2025",
+    title: "Software Engineer",
+    where: "Questronix Corporation",
+    description:
+      "One of the largest IT solutions providers and systems integrators in the Philippines since 1987.",
+  },
+  {
+    period: "2021",
+    title: "Intern / Trainee",
+    where: "Pamantasan ng Lungsod ng Maynila",
+    description:
+      "On-the-job training in the PLM ICTO System Development Division.",
+  },
+];
+
+const education = [
+  {
+    period: "2018-22",
+    title: "BS Computer Science",
+    where: "Pamantasan ng Lungsod ng Maynila",
+    description:
+      "A premier university known for competent, socially responsible graduates.",
+  },
+  {
+    period: "2016-18",
+    title: "Senior High School",
+    where: "Technological University of the Philippines",
+    description:
+      "Recognized excellence in engineering and technology education across ASEAN.",
+  },
+  {
+    period: "2012-16",
+    title: "Junior High School",
+    where: "St. Jerome Emiliani Institute",
+    description: "A private, co-educational Catholic institution.",
+  },
+];
+
+const stackGroups = [
+  {
+    label: "Languages",
+    items: ["JavaScript", "TypeScript", "Python", "SQL", "HTML", "CSS", "Dart"],
+  },
+  {
+    label: "Frameworks",
+    items: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "Django",
+      "FastAPI",
+      "Flutter",
+      "React Native",
+      "Expo",
+    ],
+  },
+  {
+    label: "Data",
+    items: ["PostgreSQL", "MySQL", "Firebase Firestore", "Neon", "Prisma"],
+  },
+  {
+    label: "Tooling",
+    items: [
+      "Git",
+      "VS Code",
+      "Postman",
+      "Docker",
+      "AWS ECR / ECS / EC2",
+      "Vercel",
+    ],
+  },
+  {
+    label: "AI & platforms",
+    items: [
+      "Ollama",
+      "Claude",
+      "OpenAI",
+      "IBM API Connect",
+      "IBM Watson Assistant",
+    ],
+  },
+];
 
 function About() {
-  const education = [
-    {
-      title: "Bachelor of Science in Computer Science",
-      where: "Pamantasan ng Lungsod ng Maynila (2018-2022)",
-      description:
-        "PLM is a premiere university that has consistently garnered a competent and socially responsible graduates who have contributed to nation-building.",
-    },
-    {
-      title: "Senior High School",
-      where: "Technological University of the Philippines (2016-2018)",
-      description:
-        "A premiere state university with recognized excellence in engineering and technology education at par with leading universities in ASEAN region.",
-    },
-    {
-      title: "Junior High School",
-      where: "St. Jerome Emiliani Institute (2012-2016)",
-      description:
-        "A private, co-educational Catholic Institution conducted by the Somascan Missionary Sisters.",
-    },
-  ];
-  const experience = [
-    {
-      title: "Software Engineer",
-      where: "Questronix Corporation (2022-Present)",
-      description:
-        "One of the largest IT solutions and service providers and systems integrators in the Philippines since 1987.",
-    },
-    {
-      title: "Intern/Trainee",
-      where: "Pamantasan ng Lungsod ng Maynila (2021)",
-      description:
-        "Started work experience through On-The-Job training in PLM's ICTO-System Development Division.",
-    },
-  ];
+  const section = SECTIONS[3];
+
   return (
-    <section
-      id="about"
-      className="min-h-screen flex flex-col justify-center py-20 border-b-2 border-base px-6 md:px-16"
-    >
+    <section id={section.id} className="px-6 pt-[88px] md:px-14">
       <motion.div
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 50 }}
         transition={{ delay: 0.1 }}
-        className="container"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="grid grid-cols-12 pb-4">
-          <div className="col-span-12 lg:col-span-8">
-            <h6 className="font-bold text-brand">ABOUT ME</h6>
-            <h1 className="font-bold text-heading md:text-5xl text-3xl py-2">
-              My Education & Experience
-            </h1>
-          </div>
-        </div>
-        <div className="flex flex-col flex-wrap md:flex-row gap-6">
-          <div className="basis-full grow lg:basis-[45%] flex flex-col gap-6">
-            <h1 className="font-bold text-heading md:text-3xl text-2xl">
-              Education
-            </h1>
-            {education.map((educ, index) => (
-              <AboutCard about={educ} key={index} />
-            ))}
-          </div>
-          <div className="basis-full grow md:basis-[45%] flex flex-col gap-6">
-            <h1 className="font-bold text-heading md:text-3xl text-2xl">
-              Experience
-            </h1>
-            {experience.map((exp, index) => (
-              <AboutCard about={exp} key={index} />
-            ))}
-          </div>
-        </div>
+        <SectionHeader num={section.num} kicker={section.kicker} />
+        <h2 className="mt-[18px] text-3xl font-bold tracking-tight text-heading md:text-section">
+          Experience &amp; education
+        </h2>
       </motion.div>
+
+      <div className="mt-8 grid border-t-2 border-rule lg:grid-cols-2">
+        <div className="border-divider py-6 pb-8 lg:pr-10">
+          <h3 className="mb-2 text-xs font-bold uppercase tracking-kicker text-heading">
+            Experience
+          </h3>
+          {experience.map((item) => (
+            <AboutCard key={item.title} about={item} />
+          ))}
+        </div>
+        <div className="border-t border-divider py-6 pb-8 lg:border-t-0 lg:border-l lg:pl-10">
+          <h3 className="mb-2 text-xs font-bold uppercase tracking-kicker text-heading">
+            Education
+          </h3>
+          {education.map((item) => (
+            <AboutCard key={item.title} about={item} />
+          ))}
+        </div>
+      </div>
+
+      <div className="border-y-2 border-rule">
+        {stackGroups.map((group, index) => (
+          <div
+            key={group.label}
+            className={`grid grid-cols-1 items-start gap-[18px] py-[18px] md:grid-cols-[128px_1fr] ${
+              index > 0 ? "border-t border-divider" : ""
+            }`}
+          >
+            <div className="text-xs font-bold uppercase tracking-kicker text-heading">
+              {group.label}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <Tag key={item} size="md">
+                  {item}
+                </Tag>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,53 +1,66 @@
+﻿import { motion } from "framer-motion";
+import { FaCode, FaServer, FaMobileScreen } from "react-icons/fa6";
+
 import ServicesCard from "./ServicesCard";
-import { FaCode, FaGear } from "react-icons/fa6";
-import { IoLogoAndroid } from "react-icons/io";
-import { motion } from "framer-motion";
+import SectionHeader from "./SectionHeader";
+import { SECTIONS } from "../data/profile";
+
+const services = [
+  {
+    num: "01",
+    title: "Frontend development",
+    description:
+      "Responsive, accessible, type-safe interfaces with scalable component systems, efficient state management, and API integration.",
+    stack: ["React", "Next.js", "TypeScript", "JavaScript", "HTML/CSS"],
+    icon: <FaCode size={26} />,
+  },
+  {
+    num: "02",
+    title: "Backend development",
+    description:
+      "Server-side services, APIs and data models, covering integration work, query performance and reliable delivery under real load.",
+    stack: ["Node.js", "Express", "Django", "FastAPI", "PostgreSQL"],
+    icon: <FaServer size={26} />,
+  },
+  {
+    num: "03",
+    title: "Mobile development",
+    description:
+      "Cross-platform mobile apps from one codebase: offline tolerant, built around the flows people actually repeat every day.",
+    stack: ["Flutter", "React Native", "Expo"],
+    icon: <FaMobileScreen size={26} />,
+  },
+];
 
 function Services() {
-  const myservices = [
-    {
-      title: "FRONTEND DEVELOPMENT",
-      description:
-        "I create visually appealing and responsive user interfaces that provide an engaging user experience.",
-      icon: <FaCode size={22} color="#34495e" />,
-    },
-    {
-      title: "BACKEND DEVELOPMENT",
-      description:
-        "I develop robust and scalable server-side solutions ensuring efficient integration and data management.",
-      icon: <FaGear size={22} color="#34495e" />,
-    },
-    {
-      title: "MOBILE DEVELOPMENT",
-      description:
-        "I build intuitive and high-performing mobile applications tailored for Android platform.",
-      icon: <IoLogoAndroid size={22} color="#34495e" />,
-    },
-  ];
+  const section = SECTIONS[1];
+
   return (
-    <section
-      id="services"
-      className="min-h-screen flex flex-col justify-center py-20 border-b-2 border-base md:px-16 px-6"
-    >
-      <div className="container">
-        <motion.div
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 50 }}
-          transition={{ delay: 0.1 }}
-          className="flex flex-row pb-4"
-        >
-          <div className="basis-full lg:basis-2/3">
-            <h6 className="font-bold text-brand">SERVICES</h6>
-            <h1 className="font-bold text-heading md:text-5xl text-3xl py-2">
-              Services That I Provide
-            </h1>
-          </div>
-        </motion.div>
-        <div className="flex flex-row flex-wrap gap-6">
-          {myservices.map((service, index) => (
-            <ServicesCard key={index} service={service} />
-          ))}
-        </div>
+    <section id={section.id} className="px-6 pt-[88px] md:px-14">
+      <motion.div
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        transition={{ delay: 0.1 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <SectionHeader num={section.num} kicker={section.kicker} />
+        <h2 className="mt-[18px] text-3xl font-bold tracking-tight text-heading md:text-section">
+          What I do
+        </h2>
+      </motion.div>
+
+      <div className="mt-8 grid border-t-2 border-rule md:grid-cols-3">
+        {services.map((service, index) => (
+          <ServicesCard
+            key={service.num}
+            service={service}
+            edges={
+              index === 0
+                ? "md:pr-7"
+                : "border-t border-divider md:border-t-0 md:border-l md:px-7 md:last:pr-0"
+            }
+          />
+        ))}
       </div>
     </section>
   );

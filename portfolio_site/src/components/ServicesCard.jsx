@@ -1,20 +1,30 @@
-import PropTypes from "prop-types";
+﻿import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-function ServicesCard({ service }) {
+import Tag from "./Tag";
+
+function ServicesCard({ service, edges = "" }) {
   return (
     <motion.div
       whileInView={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: 30 }}
       transition={{ delay: 0.1 }}
-      className="lg:basis-[30%] md:basis-[45%] grow flex"
+      viewport={{ once: true, amount: 0.2 }}
+      className={`flex flex-col gap-3 border-divider py-7 ${edges}`}
     >
-      <div className="bg-base rounded-2xl p-8 hover:shadow-cardShadow transition-all flex flex-col flex-grow">
-        <div className="flex items-center justify-center w-[55px] h-[55px] rounded-xl bg-brand p-2 mb-1">
-          {service.icon}
-        </div>
-        <h1 className="font-bold py-4 text-lg text-heading">{service.title}</h1>
-        <p>{service.description}</p>
+      <div className="flex items-center justify-between">
+        <span className="text-brand">{service.icon}</span>
+      </div>
+      <h3 className="mt-1.5 text-[21px] font-bold leading-tight tracking-tight text-heading">
+        {service.title}
+      </h3>
+      <p className="text-[15px] leading-relaxed text-body">
+        {service.description}
+      </p>
+      <div className="mt-1 flex flex-wrap gap-1.5">
+        {service.stack.map((item) => (
+          <Tag key={item}>{item}</Tag>
+        ))}
       </div>
     </motion.div>
   );
@@ -22,6 +32,7 @@ function ServicesCard({ service }) {
 
 ServicesCard.propTypes = {
   service: PropTypes.object,
+  edges: PropTypes.string,
 };
 
 export default ServicesCard;

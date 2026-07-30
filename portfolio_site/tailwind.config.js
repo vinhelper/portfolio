@@ -3,33 +3,39 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      boxShadow: {
-        cardShadow: "-4px 4px 0 0 rgb(26, 188, 156)",
-        cardShadow2: "-6px 6px 0 0 rgb(26, 188, 156)",
-      },
-      backgroundImage: {
-        "side-bar":
-          "linear-gradient(rgba(52, 73, 94, 0.9), rgba(52, 73, 94, 1)), url(../images/sidebar-img.jpg)",
-      },
       fontFamily: {
-        quicksand: ["Quicksand", "sans-serif"],
+        quicksand: ["Quicksand", "system-ui", "sans-serif"],
       },
       colors: {
-        body: "#d4e6f1",
-        heading: "#f7f9f9",
-        base: "#34495e",
-        base2: "#2c3e50",
-        brand: "#1abc9c",
-        brand2: "#16a085",
+        bg: "#22394a",
+        surface: "#2c4a5e",
+        heading: "#f1f6f8",
+        body: "#cbdae2",
+        muted: "#a9c0cc",
+        faint: "#8fa8b6",
+        brand: "#2bbd8f",
+        brand300: "#6fdcb6",
+        brand700: "#52d1a8",
+        brandTint: "rgba(43, 189, 143, 0.16)",
+        ink: "#12303f",
+        rule: "rgba(255, 255, 255, 0.24)",
+        divider: "rgba(255, 255, 255, 0.16)",
       },
-      // colors: {
-      //   body: "#f5f5f5", // Very light grey
-      //   heading: "#424242", // Dark grey
-      //   base: "#212121", // Almost black
-      //   base2: "#1b1b1b", // Darker almost black
-      //   brand: "#ffab40", // Light orange
-      //   brand2: "#ff9100", // Bright orange
-      // },
+      borderRadius: {
+        control: "10px",
+        frame: "14px",
+      },
+      fontSize: {
+        display: ["clamp(44px, 5.4vw, 82px)", { lineHeight: "0.96" }],
+        section: ["clamp(32px, 3.4vw, 52px)", { lineHeight: "1" }],
+        banner: ["clamp(36px, 4.6vw, 68px)", { lineHeight: "0.98" }],
+      },
+      letterSpacing: {
+        kicker: "0.14em",
+        label: "0.1em",
+        nav: "0.06em",
+        action: "0.08em",
+      },
     },
   },
   plugins: [],

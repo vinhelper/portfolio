@@ -1,36 +1,17 @@
-import { FaGithub, FaLinkedin, FaViber } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa6";
 
 function Footer() {
   return (
-    <footer className="w-full py-6 md:px-16 px-6 flex flex-row items-center justify-between">
-      <div className="">
-        <p className="md:text-md text-sm">
-          Created by{" "}
-          <a
-            href="https://github.com/vinhelper"
-            className="text-heading font-bold hover:text-brand"
-          >
-            VINHELPER
-          </a>
-        </p>
-      </div>
-      <div
-        id="icons"
-        className="flex flex-row gap-1 items-center justify-center"
+    <footer className="mx-6 mt-[72px] mb-10 flex flex-wrap justify-between gap-4 border-t-2 border-rule pt-[18px] text-xs uppercase tracking-action text-muted md:mx-14">
+      <span>&copy; 2026 Arvin Jay Nadal</span>
+      <span>Built in Cavite, Philippines</span>
+      <a
+        href="#home"
+        className="inline-flex items-center gap-2 text-brand hover:text-brand300"
       >
-        <a
-          href="https://github.com/vinhelper"
-          className="p-2 bg-base rounded-full"
-        >
-          <FaGithub size={20} color="#f7f9f9" />
-        </a>
-        <a href="#" className="p-2 bg-base rounded-full">
-          <FaLinkedin size={20} color="#f7f9f9" />
-        </a>
-        <a href="#" className="p-2 bg-base rounded-full">
-          <FaViber size={20} color="#f7f9f9" />
-        </a>
-      </div>
+        Back to top
+        <FaArrowUp size={12} />
+      </a>
     </footer>
   );
 }

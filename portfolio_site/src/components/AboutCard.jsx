@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-
+﻿import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
 function AboutCard({ about }) {
@@ -8,12 +7,22 @@ function AboutCard({ about }) {
       whileInView={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: 20 }}
       transition={{ delay: 0.1 }}
-      className="w-full"
+      viewport={{ once: true, amount: 0.2 }}
+      className="grid grid-cols-[76px_1fr] items-baseline gap-x-[18px] border-t border-divider py-[18px] md:grid-cols-[96px_1fr]"
     >
-      <div className="bg-base rounded-2xl p-6 hover:shadow-cardShadow transition-all flex flex-col gap-2">
-        <h1 className="font-bold text-xl text-heading">{about.title}</h1>
-        <h3 className="text-brand italic">{about.where}</h3>
-        <p className="">{about.description}</p>
+      <div className="text-[13px] font-bold tracking-wide text-heading">
+        {about.period}
+      </div>
+      <div>
+        <div className="text-[19px] font-bold leading-snug text-heading">
+          {about.title}
+        </div>
+        <div className="mt-[3px] text-sm font-semibold text-brand700">
+          {about.where}
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-body">
+          {about.description}
+        </p>
       </div>
     </motion.div>
   );
